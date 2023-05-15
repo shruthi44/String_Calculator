@@ -22,20 +22,14 @@ public class StringCalculator {
             return noEmptyString.substring(1);
     }
 
-    public int greaterThan1000IsEqualsTo0 (int greaterThan1000){
-        return greaterThan1000 % 1000;
-    }
-
     public int add(String stringOfIntegers) {
 
         if (stringOfIntegers.contains("/n")){
             stringOfIntegers= removeLineBreaks(stringOfIntegers);
         }
-
         if ( stringOfIntegers.equals("")) {
             return 0;
         }
-
         if (stringOfIntegers.endsWith(",")){
             throw new IllegalArgumentException("Invalid input.");
         }
