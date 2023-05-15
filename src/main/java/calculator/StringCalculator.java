@@ -23,8 +23,11 @@ public class StringCalculator {
         int total = 0;
         String[] splittedStringOfInts = integers.split(",");
         for (String strInt : splittedStringOfInts) {
-            total += Integer.parseInt(strInt);
-            throw new IllegalArgumentException("Invalid input");
+            try {
+                total += Integer.parseInt(strInt);
+            } catch(Exception NumberFormatException) {
+                throw new IllegalArgumentException("Invalid input");
+            }
         }
         return total;
     }
