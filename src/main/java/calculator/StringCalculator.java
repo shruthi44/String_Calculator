@@ -16,19 +16,29 @@ public class StringCalculator {
             return 0;
         }
 
-//       if (integers.endsWith(",")){
-//            throw new IllegalArgumentException("Invalid input.");
-//      }
+       if (integers.endsWith(",")){
+            throw new IllegalArgumentException("Invalid input.");
+      }
 
         int total = 0;
         String[] splittedStringOfInts = integers.split(",");
+        List negativeNumbers = new ArrayList<Integer>();
         for (String strInt : splittedStringOfInts) {
             try {
-                total += Integer.parseInt(strInt);
+                int currentNum = Integer.parseInt(strInt);
+
+                if (currentNum < 0){
+                    negativeNumbers.add(currentNum);
+                }
+                total += currentNum;
             } catch(Exception NumberFormatException) {
-                throw new IllegalArgumentException("Invalid input");
+                throw new IllegalArgumentException("Invalid input.");
             }
         }
+        if (negativeNumbers.size() != 0){
+            throw new IllegalArgumentException("Negative numbers are not allowed. " + negativeNumbers);
+        }
+
         return total;
     }
 }

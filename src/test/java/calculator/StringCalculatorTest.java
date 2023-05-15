@@ -44,7 +44,25 @@ class StringCalculatorTest {
     @Test
     public void addShouldReturnInvalidInput(){
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add(new String("3,4 5")));
-      assertEquals("Invalid input", ex.getMessage());
+      assertEquals("Invalid input.", ex.getMessage());
+    }
+
+    @Test
+    public void addShouldThrowExceptionLastCharacterComma(){
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add(new String("3,4,5,")));
+        assertEquals("Invalid input.", ex.getMessage());
+    }
+
+    @Test
+    public void addShouldThrowExceptionOnlyCharacterComma(){
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add(new String(",")));
+        assertEquals("Invalid input.", ex.getMessage());
+    }
+
+    @Test
+    public void addShouldThrowExceptionForNegativeNumbers(){
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add(new String("-3,-4,5,")));
+        assertEquals("Negative numbers are not allowed. [-3,-4]", ex.getMessage());
     }
 }
 
