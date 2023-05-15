@@ -5,32 +5,31 @@ import java.util.List;
 
 public class StringCalculator {
 
-    public int add(){
+    public int add() {
         throw new IllegalArgumentException("No input.");
     }
 
     public String removeLineBreaks(String stringWithLineBreaks) {
         String noEmptyString = "";
-        String stringWithoutLineBreaks = "";
-            String[] stringsWithoutLineBreaks = stringWithLineBreaks.split("/n");
-            for (String strInts : stringsWithoutLineBreaks) {
-                if (strInts.length() > 0) {
-                    noEmptyString = noEmptyString + "," + strInts;
-                }
+        String[] stringsWithoutLineBreaks = stringWithLineBreaks.split("/n");
+        for (String strInts : stringsWithoutLineBreaks) {
+            if (strInts.length() > 0) {
+                noEmptyString = noEmptyString + "," + strInts;
             }
-            System.out.println(noEmptyString.substring(1));
-            return noEmptyString.substring(1);
+        }
+        System.out.println(noEmptyString.substring(1));
+        return noEmptyString.substring(1);
     }
 
     public int add(String stringOfIntegers) {
 
-        if (stringOfIntegers.contains("/n")){
-            stringOfIntegers= removeLineBreaks(stringOfIntegers);
+        if (stringOfIntegers.contains("/n")) {
+            stringOfIntegers = removeLineBreaks(stringOfIntegers);
         }
-        if ( stringOfIntegers.equals("")) {
+        if (stringOfIntegers.equals("")) {
             return 0;
         }
-        if (stringOfIntegers.endsWith(",")){
+        if (stringOfIntegers.endsWith(",")) {
             throw new IllegalArgumentException("Invalid input.");
         }
 
@@ -40,18 +39,18 @@ public class StringCalculator {
         for (String strInt : splitStringOfInts) {
             try {
                 int currentNum = Integer.parseInt(strInt);
-                if (currentNum < 0){
+                if (currentNum < 0) {
                     negativeNumbers.add(currentNum);
                 }
-                if (currentNum > 1000){
+                if (currentNum > 1000) {
                     currentNum = currentNum % 1000;
                 }
                 total += currentNum;
-            } catch(Exception NumberFormatException) {
+            } catch (Exception NumberFormatException) {
                 throw new IllegalArgumentException("Invalid input.");
             }
         }
-        if (negativeNumbers.size() != 0){
+        if (negativeNumbers.size() != 0) {
             throw new IllegalArgumentException("Negative numbers are not allowed." + negativeNumbers);
         }
         return total;
