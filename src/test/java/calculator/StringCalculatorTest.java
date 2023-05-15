@@ -64,5 +64,9 @@ class StringCalculatorTest {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add(new String("-3,-4,5")));
         assertEquals("Negative numbers are not allowed.[-3, -4]", ex.getMessage());
     }
+    @Test
+    public void addShouldAcceptLineBreaksFromUser() {
+        assertEquals(15, calculator.add(new String("4,5/n/n6")));
+    }
 }
 
