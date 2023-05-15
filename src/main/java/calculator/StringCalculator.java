@@ -1,51 +1,57 @@
 package calculator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class StringCalculator {
 
     public int add(){
         throw new IllegalArgumentException("No input.");
     }
-    public int add(String integers) {
 
-        if ( integers.equals("")) {
+    public String removeLineBreaks(String stringWithLineBreaks) {
+        String noEmptyString = "";
+        String stringWithoutLineBreaks = "";
+            String[] stringsWithoutLineBreaks = stringWithLineBreaks.split("/n");
+            for (String strInts : stringsWithoutLineBreaks) {
+                if (strInts.length() > 0) {
+                    noEmptyString = noEmptyString + "," + strInts;
+                }
+            }
+            System.out.println(noEmptyString.substring(1));
+            return noEmptyString.substring(1);
+    }
+
+    public int greaterThan1000IsEqualsTo0 (int greaterThan1000){
+        return greaterThan1000 % 1000;
+    }
+
+    public int add(String stringOfIntegers) {
+
+        if (stringOfIntegers.contains("/n")){
+            stringOfIntegers= removeLineBreaks(stringOfIntegers);
+        }
+
+        if ( stringOfIntegers.equals("")) {
             return 0;
         }
 
-        if (integers.endsWith(",")){
+        if (stringOfIntegers.endsWith(",")){
             throw new IllegalArgumentException("Invalid input.");
         }
 
-        if(integers.contains("/n")) {
-            String noEmptyString = "";
-            String[] stringsWithoutLineBreaks = integers.split("/n");
-            for (String strInts : stringsWithoutLineBreaks) {
-                System.out.println(strInts);
-                if(strInts.length() > 0){
-                    noEmptyString = noEmptyString + "," + strInts;
-//                   System.out.println(noEmptyString);
-                }
-                String newOne = noEmptyString.substring(1);
-                System.out.println(newOne);
-            }
-        }
         int total = 0;
-        String[] splittedStringOfInts = integers.split(",");
+        String[] splitStringOfInts = stringOfIntegers.split(",");
         List negativeNumbers = new ArrayList<Integer>();
-        for (String strInt : splittedStringOfInts) {
+        for (String strInt : splitStringOfInts) {
             try {
                 int currentNum = Integer.parseInt(strInt);
-//                System.out.println(currentNum);
-
                 if (currentNum < 0){
                     negativeNumbers.add(currentNum);
                 }
-
+                if (currentNum > 1000){
+                    currentNum = currentNum % 1000;
+                }
                 total += currentNum;
             } catch(Exception NumberFormatException) {
                 throw new IllegalArgumentException("Invalid input.");

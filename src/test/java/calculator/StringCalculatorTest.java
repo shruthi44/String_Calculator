@@ -68,5 +68,10 @@ class StringCalculatorTest {
     public void addShouldAcceptLineBreaksFromUser() {
         assertEquals(15, calculator.add(new String("4,5/n/n6")));
     }
+
+    @Test
+    public void addShouldMake1000To0() {
+        assertEquals(15, calculator.add(new String("1004,1005/n/n1006")));
+    }
 }
 
