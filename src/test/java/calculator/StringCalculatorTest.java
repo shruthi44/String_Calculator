@@ -46,5 +46,5 @@ class StringCalculatorTest {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add(new String("3,4 5")));
       assertEquals("Invalid input", ex.getMessage());
     }
-    }
+}
 
