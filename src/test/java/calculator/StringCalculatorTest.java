@@ -41,4 +41,10 @@ class StringCalculatorTest {
     public void addShouldReturnSumOfIntegers() {
         assertEquals(15, calculator.add(new String("4,5,6")));
     }
-}
+    @Test
+    public void addShouldReturnInvalidInput(){
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add(new String("3,4 5")));
+      assertEquals("Invalid input", ex.getMessage());
+    }
+    }
+

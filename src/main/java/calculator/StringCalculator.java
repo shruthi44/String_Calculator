@@ -16,18 +16,16 @@ public class StringCalculator {
             return 0;
         }
 
-//        if (integers.endsWith(",")){
+//       if (integers.endsWith(",")){
 //            throw new IllegalArgumentException("Invalid input.");
-//        }
+//      }
 
         int total = 0;
         String[] splittedStringOfInts = integers.split(",");
-
         for (String strInt : splittedStringOfInts) {
             total += Integer.parseInt(strInt);
-
+            throw new IllegalArgumentException("Invalid input");
         }
-
         return total;
     }
 }
