@@ -26,6 +26,7 @@ public class StringCalculator {
         for (String strInt : splittedStringOfInts) {
             try {
                 int currentNum = Integer.parseInt(strInt);
+                System.out.println(currentNum);
 
                 if (currentNum < 0){
                     negativeNumbers.add(currentNum);
@@ -36,7 +37,7 @@ public class StringCalculator {
             }
         }
         if (negativeNumbers.size() != 0){
-            throw new IllegalArgumentException("Negative numbers are not allowed. " + negativeNumbers);
+            throw new IllegalArgumentException("Negative numbers are not allowed." + negativeNumbers);
         }
 
         return total;
