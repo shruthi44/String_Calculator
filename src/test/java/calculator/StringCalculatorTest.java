@@ -10,7 +10,7 @@ class StringCalculatorTest {
 
     @Test
     public void addShouldThrowIllegalArgumentExceptionForEmptyArray() {
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add(new String()));
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> calculator.add());
         assertEquals("No input.", ex.getMessage());
     }
 
